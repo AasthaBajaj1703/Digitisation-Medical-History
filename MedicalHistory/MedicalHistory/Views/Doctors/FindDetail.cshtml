@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "FindDetail";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        #plogin-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #808080;
+            padding: 10px;
+            background-color: black;
+            opacity:0.7
+        }
+
+        #message {
+            color: red;
+        }
+
+        tr, td {
+            margin: 10px;
+            padding: 10px;
+        }
+        body {
+            background-image: url("/Content/Images/home.jpg");
+            background-repeat: no-repeat;
+            background-size: 1535px 900px;
+        }
+        #find {
+            align-items: center;
+            margin-left: 110px;
+        }
+        #heading {
+            background-color: black;
+            height: 50px;
+            color: white;
+            padding: 10px;
+            opacity:0.7
+        }
+    </style>
+</head>
+<body>
+    <h2 id="heading">Enter the patient id</h2>
+    <div id="plogin-div" style="align-self:center; align-content: center">
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    <td><text style="color:white;">Patient Id</text></td>
+
+                    <td>@Html.TextBox("patientid")</td>
+                </tr>
+
+            </table>
+            
+            <span id="message" style="margin-left:auto; margin-right:auto;">@ViewBag.Message</span>
+            <br />
+            <button id="find" type="submit" value="Find">Find</button>
+
+        }
+    </div>
+
+</body>
+</html>
+

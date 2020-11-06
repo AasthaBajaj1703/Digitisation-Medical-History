@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "PatientLogin";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Patient Login Page</title>
+        <style>
+            #plogin-div {
+                position: absolute;
+                left: 40%;
+                top: 40%;
+                border: 1px solid #808080;
+                padding: 10px;
+                background-color: black;
+                opacity:0.7;
+            }
+
+            #message {
+                color: red;
+            }
+
+            tr,td {
+                margin: 10px;
+                padding: 10px;
+            }
+
+            button {
+                align-items: center;
+                margin-left:110px;
+            }
+            body{
+                background-image:url("/Content/Images/home.jpg");
+                background-repeat:no-repeat;
+                background-size:1535px 900px;
+            }
+            #heading{
+                background-color:black;
+                height:50px;
+                color:white;
+                padding:10px;
+                opacity:0.7
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="heading">Patient Login</h2>
+        <div id="plogin-div" style="align-self:center; align-content: center">
+            @using (Html.BeginForm())
+            {
+                <table>
+                    <tr>
+                        <td><text style="color:white;">Id</text></td>
+                        
+                        <td>@Html.TextBox("patientId")</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><text style="color:white;">Password</text></td>
+                        
+                        <td>@Html.Password("password")</td>
+                    </tr>
+
+                </table>
+                <div style="margin-left:90px">@Html.ActionLink("Create Account", "Create")</div>
+                <span id="message" style="margin-left:auto; margin-right:auto;">@ViewBag.Message</span>
+                <br />
+                <button id="button" type="submit" value="Login">Login</button>
+
+            }
+        </div>
+
+    </body>
+</html>

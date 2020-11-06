@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "DoctorLogin";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Login Page</title>
+    <style>
+        #plogin-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #808080;
+            padding: 10px;
+            background-color: black;
+            opacity:0.7;
+        }
+
+        #message {
+            color: red;
+        }
+
+        tr, td {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        button {
+            align-items: center;
+        }
+        body {
+            background-image: url("/Content/Images/home.jpg");
+            background-repeat: no-repeat;
+            background-size: 1535px 900px;
+           
+        }
+
+        #heading {
+            background-color: black;
+            padding: 10px;
+            opacity: 0.7;
+            margin: 20px;
+            color:white
+        }
+
+    </style>
+</head>
+<body>
+    <h2 id="heading">DoctorLogin</h2>
+    <div id="plogin-div" style="align-self:center; align-content: center">
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    <td><text style="color:white;">Id</text></td>
+
+                    <td>@Html.TextBox("doctorId")</td>
+                </tr>
+
+                <tr>
+                    <td><text style="color:white;">Password</text></td>
+
+                    <td>@Html.Password("password")</td>
+                </tr>
+
+            </table>
+            <div>@Html.ActionLink("Create Account", "Create")</div>
+            <span id="message" style="margin-left:auto; margin-right:auto;">@ViewBag.Message</span>
+            <br />
+            <button id="button" type="submit" value="Login">Login</button>
+
+        }
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MedicalHistory.History>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Disease)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hospital)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doctor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disease)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hospital)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HistoryId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HistoryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HistoryId })
+        </td>
+    </tr>
+}
+
+</table>

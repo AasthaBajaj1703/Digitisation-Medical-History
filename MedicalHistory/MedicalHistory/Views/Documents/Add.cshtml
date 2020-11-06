@@ -1,0 +1,86 @@
+﻿@model MedicalHistory.Document
+
+@{
+    ViewBag.Title = "Add";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #heading {
+            background-color: black;
+            padding: 5px;
+            opacity: 0.7;
+            margin: 20px;
+            color: white
+        }
+
+        #content {
+            background-color: black;
+            opacity: 0.7;
+            padding: 10px;
+            margin: 20px;
+            width:250px
+        }
+
+        body {
+            background-image: url("/Content/Images/home.jpg");
+            background-repeat: no-repeat;
+            background-size: 1535px 900px;
+            color:white
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Add", "Documents", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2 id="heading">Add Document</h2>
+        <div id="content">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @*<div class="form-group">
+            @Html.LabelFor(model => model.PatientId, "PatientId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PatientId,new { htmlAttributes = new { @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.PatientId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+            @Html.HiddenFor(model => model.PatientId)
+            @*<div class="form-group">
+            @Html.LabelFor(model => model.HistoryId, "HistoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HistoryId,new{ htmlAttributes = new { @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.HistoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+            @Html.HiddenFor(model => model.HistoryId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Path, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="ImageFile" required />
+                    @*@Html.EditorFor(model => model.Path, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Path, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-default"  />
+                </div>
+            </div>
+            <div><p style="color:green">@ViewBag.Message</p></div>
+
+            <div>
+                @Html.ActionLink("Back to Dcouments", "Details",new { historyid = Session["hid"] })
+            </div>
+        </div>
+    </div>
+    }
+</body>
+</html>

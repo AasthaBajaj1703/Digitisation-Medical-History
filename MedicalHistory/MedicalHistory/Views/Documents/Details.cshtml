@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MedicalHistory.Document>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #heading {
+            background-color: black;
+            padding: 5px;
+            opacity: 0.7;
+            margin: 20px;
+            color: white
+        }
+
+        #content {
+            background-color: black;
+            /*opacity: 0.7;*/
+            padding: 10px;
+            margin: 20px;
+        }
+
+        body {
+            background-image: url("/Content/Images/home.jpg");
+            background-repeat: no-repeat;
+            background-size: 1535px 900px;
+        }
+        tr{
+            margin:20px;
+        }
+        img{
+            border:1px solid #ddd;
+            border-radius:4px;
+            padding:5px;
+            
+        }
+        img:hover{
+            box-shadow: 0 0 2px 1px rgba(0,140,186,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="heading">
+        <h2>Documents</h2>
+        <h5>@Html.ActionLink("Add New Document", "Add", new { historyid = Session["hid"] })</h5>
+    </div>
+    <div id="content">
+        <table>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a target="_blank" href="@Url.Content(item.Path)"></a><img src="@Url.Content(item.Path)" width="250" height="250" /> </td>
+                    <td style="padding:50px">@Html.ActionLink("Delete", "Delete", new { documentid = item.DocumentId }) </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>    

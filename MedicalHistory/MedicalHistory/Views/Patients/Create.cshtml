@@ -1,0 +1,148 @@
+﻿@model MedicalHistory.Patient
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #heading {
+            background-color: black;
+            padding: 5px;
+            opacity: 0.7;
+            margin: 20px;
+            color: white
+        }
+
+        #content {
+            background-color: black;
+            opacity: 0.7;
+            padding: 10px;
+            margin: 20px;
+            
+        }
+
+        body {
+            background-image: url("/Content/Images/home.jpg");
+            background-repeat: no-repeat;
+            background-size: 1535px 900px;
+            /*color: white*/
+        }
+        #label{
+            color:white
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2 id="heading">Create Account</h2>
+        <div id="content">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.BloodGroup, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BloodGroup, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.Allergy, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Allergy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Allergy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ContactNo)
+                    @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    <span id="label">Male:</span> @Html.RadioButtonFor(model => model.Gender, "Male")
+                    <span id="label">Female:</span> @Html.RadioButtonFor(model => model.Gender, "Female")
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span id="label">@Html.LabelFor(model => model.Pincode, htmlAttributes: new { @class = "control-label col-md-2" })</span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+            <div style="color:green;">@ViewBag.Message</div>
+
+
+            <div>
+                @Html.ActionLink("Back to Login Page", "PatientLogin")
+            </div>
+        </div>
+    </div>
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        
+    }
+</body>
+</html>

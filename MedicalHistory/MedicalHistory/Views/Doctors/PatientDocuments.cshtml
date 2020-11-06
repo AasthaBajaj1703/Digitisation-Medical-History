@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MedicalHistory.Document>
+
+@{
+    ViewBag.Title = "PatientDocuments";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #heading {
+            background-color: black;
+            padding: 10px;
+            opacity: 0.7;
+            margin: 20px;
+            color: white
+        }
+        table{
+            background-color:black;
+            opacity:0.7;
+            padding:10px;
+            margin:20px;
+        }
+        body {
+            background-image: url("/Content/Images/home.jpg");
+            background-repeat: no-repeat;
+            background-size: 1535px 900px;
+           
+        }
+    </style>
+</head>
+<body>
+    <h2 id="heading">PatientDocuments</h2>
+
+    <table class="table">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@Url.Content(item.Path)" width="250" height="250" /> </td>
+
+            </tr>
+        }
+    </table>
+</body>
+</html>
